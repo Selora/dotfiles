@@ -1,5 +1,13 @@
 #!/bin/bash
 
+echo -e "\033[1;36m"
+echo "╔════════════════════════════════════╗"
+echo "║           🚀 Selora's  🚀          ║"
+echo "║    Dotfiles Installation Script    ║"
+echo "║   Setting up your environment...   ║"
+echo "╚════════════════════════════════════╝"
+echo -e "\033[0m"
+
 # Directory of current bash script
 CWD=$PWD
 DOTFILES_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
@@ -11,6 +19,9 @@ OS=$(uname -s | tr '[:upper:]' '[:lower:]')
 
 mkdir -p $XDG_CONFIG_HOME/nix
 echo "experimental-features = nix-command flakes" >>$XDG_CONFIG_HOME/nix/nix.conf
+
+# Ensure ~/.nix-profile/bin is in PATH for this script
+export PATH="$HOME/.nix-profile/bin:$PATH"
 
 # Using the arch-os target is a best-effort automation to build the same environment on different arch
 nix profile install $DOTFILES_DIR#packages.${ARCH}-${OS}
@@ -46,3 +57,8 @@ add_if_missing() {
 # Apply to .bashrc and .zshrc
 add_if_missing "$HOME/.bashrc"
 add_if_missing "$HOME/.zshrc"
+
+echo -e "\033[1;32m"
+echo "✅ Dotfiles installation complete!"
+echo "🔥 Your environment is now ready."
+echo -e "\033[0m"
