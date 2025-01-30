@@ -16,3 +16,5 @@ vim.o.listchars = "eol:⏎,tab:␉·,trail:␠,nbsp:⎵"
 
 -- Scroll when cursor is <line +/- X> above or below
 vim.o.scrolloff = 6
+
+vim.o.lazyredraw = false
