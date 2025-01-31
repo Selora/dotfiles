@@ -16,6 +16,7 @@ alias bless bat
 #alias cd zoxide
 
 # Per-system alias
+touch ~/.alias.fish # If it doesn't exists
 . ~/.alias.fish
 
 set -gx LANG "en_US.utf-8"
