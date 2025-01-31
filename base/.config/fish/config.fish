@@ -15,6 +15,9 @@ alias cat "bat -pP"
 alias bless bat
 #alias cd zoxide
 
+# Per-system alias
+. ~/.alias.fish
+
 set -gx LANG "en_US.utf-8"
 set -gx EDITOR nvim
 
@@ -41,3 +44,6 @@ set fzf_fd_opts --hidden --no-ignore --max-depth 5
 
 set -gx SSH_AGENT_PID ""
 set -gx SSH_AUTH_SOCK "$XDG_RUNTIME_DIR/gnupg/S.gpg-agent.ssh"
+
+# Added by LM Studio CLI (lms)
+set -gx PATH $PATH /home/selora/.lmstudio/bin

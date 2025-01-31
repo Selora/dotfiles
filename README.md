@@ -1,5 +1,14 @@
 # Dotfiles
 
+<!--toc:start-->
+- [Dotfiles](#dotfiles)
+  - [Current features](#current-features)
+  - [Installation](#installation)
+    - [Adding tools, dependencies, etc](#adding-tools-dependencies-etc)
+  - [Notes on using `fish` as a default shell](#notes-on-using-fish-as-a-default-shell)
+  - [Notes on dealing with a failed install](#notes-on-dealing-with-a-failed-install)
+<!--toc:end-->
+
 Battery-included Linux/Unix environment. Currently tested on `x86_64-linux` but should work on `aarch64-*` as well, and MacOS.
 
 ## Current features
