@@ -41,8 +41,11 @@ BLOCK='
 # Start Fish only for interactive sessions
 if [[ $- == *i* ]] && [ -x "$(command -v fish)" ]; then
   exec fish
+else
+  echo "⚠️ Fish shell not found, falling back to default shell."
 fi
 '
+
 add_if_missing() {
   local file="$1"
 
@@ -57,6 +60,12 @@ add_if_missing() {
 # Apply to .bashrc and .zshrc
 add_if_missing "$HOME/.bashrc"
 add_if_missing "$HOME/.zshrc"
+
+# Install terminfo
+tempfile=$(mktemp) &&
+  curl -o $tempfile https://raw.githubusercontent.com/wez/wezterm/main/termwiz/data/wezterm.terminfo &&
+  tic -x -o ~/.terminfo $tempfile &&
+  rm $tempfile
 
 echo -e "\033[1;32m"
 echo "✅ Dotfiles installation complete!"
