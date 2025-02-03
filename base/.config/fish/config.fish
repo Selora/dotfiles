@@ -43,8 +43,6 @@ set fzf_fd_opts --hidden --no-ignore --max-depth 5
 #        Search Processes   |  Ctrl+Alt+P (P for process)   |  --processes
 #        Search Variables   |  Ctrl+V     (V for variable)  |  --variables
 
-set -gx SSH_AGENT_PID ""
-set -gx SSH_AUTH_SOCK "$XDG_RUNTIME_DIR/gnupg/S.gpg-agent.ssh"
 
 # Added by LM Studio CLI (lms)
 set -gx PATH $PATH /home/selora/.lmstudio/bin
