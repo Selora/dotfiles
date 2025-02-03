@@ -17,4 +17,6 @@ vim.o.listchars = "eol:⏎,tab:␉·,trail:␠,nbsp:⎵"
 -- Scroll when cursor is <line +/- X> above or below
 vim.o.scrolloff = 6
 
-vim.o.lazyredraw = false
+-- Temporary fix for https://github.com/wez/wezterm/issues/4607
+-- Arch still tracks the 20240203 release
+vim.o.termsync = false
