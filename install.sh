@@ -17,6 +17,9 @@ XDG_CONFIG_HOME="$HOME/.config"
 ARCH=$(uname -m)
 OS=$(uname -s | tr '[:upper:]' '[:lower:]')
 
+echo "**************************************"
+echo "* Installing Nix flake @$DOTFILES_DIR#packages.${ARCH}-${OS}"
+
 mkdir -p $XDG_CONFIG_HOME/nix
 echo "experimental-features = nix-command flakes" >>$XDG_CONFIG_HOME/nix/nix.conf
 
