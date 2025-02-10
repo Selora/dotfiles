@@ -15,3 +15,14 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
     vim.o.ft = "jsonc"
   end,
 })
+
+local last_refresh = 0
+vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI", "TextChanged", "TextChangedI", "BufEnter" }, {
+  callback = function()
+    local now = vim.loop.now()
+    if now - last_refresh > 80 then -- Avoid triggering too often
+      last_refresh = now
+      vim.cmd("mode") -- Forces full screen repaint
+    end
+  end,
+})
