@@ -21,7 +21,8 @@ echo "**************************************"
 echo "* Installing Nix flake @$DOTFILES_DIR#packages.${ARCH}-${OS}"
 
 mkdir -p $XDG_CONFIG_HOME/nix
-echo "experimental-features = nix-command flakes" >>$XDG_CONFIG_HOME/nix/nix.conf
+#echo "experimental-features = nix-command flakes" >>$XDG_CONFIG_HOME/nix/nix.conf
+grep -qxF "experimental-features = nix-command flakes" "$XDG_CONFIG_HOME/nix/nix.conf" || echo "experimental-features = nix-command flakes" >>"$XDG_CONFIG_HOME/nix/nix.conf"
 
 # Ensure ~/.nix-profile/bin is in PATH for this script
 export PATH="$HOME/.nix-profile/bin:$PATH"
