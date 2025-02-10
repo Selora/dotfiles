@@ -18,15 +18,18 @@ ARCH=$(uname -m)
 OS=$(uname -s | tr '[:upper:]' '[:lower:]')
 
 echo "**************************************"
-echo "* Installing Nix flake @$DOTFILES_DIR#packages.${ARCH}-${OS}"
+echo "* Setting nix config and exporting nix-profile to $HOME/profile"
 
 mkdir -p $XDG_CONFIG_HOME/nix
 #echo "experimental-features = nix-command flakes" >>$XDG_CONFIG_HOME/nix/nix.conf
 grep -qxF "experimental-features = nix-command flakes" "$XDG_CONFIG_HOME/nix/nix.conf" || echo "experimental-features = nix-command flakes" >>"$XDG_CONFIG_HOME/nix/nix.conf"
+grep -qxF 'PATH="$HOME/.nix-profile/bin:$PATH"' "$HOME/profile" || echo 'PATH="$HOME/.nix-profile/bin:$PATH"' >>$HOME/profile
 
 # Ensure ~/.nix-profile/bin is in PATH for this script
 export PATH="$HOME/.nix-profile/bin:$PATH"
 
+echo "**************************************"
+echo "* Installing Nix flake @$DOTFILES_DIR#packages.${ARCH}-${OS}"
 # Using the arch-os target is a best-effort automation to build the same environment on different arch
 nix profile install $DOTFILES_DIR#packages.${ARCH}-${OS}
 # Update so it gets rid of version conflict and always install the latest
