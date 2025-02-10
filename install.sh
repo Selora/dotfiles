@@ -23,7 +23,7 @@ echo "* Setting nix config and exporting nix-profile to $HOME/profile"
 mkdir -p $XDG_CONFIG_HOME/nix
 #echo "experimental-features = nix-command flakes" >>$XDG_CONFIG_HOME/nix/nix.conf
 grep -qxF "experimental-features = nix-command flakes" "$XDG_CONFIG_HOME/nix/nix.conf" || echo "experimental-features = nix-command flakes" >>"$XDG_CONFIG_HOME/nix/nix.conf"
-grep -qxF 'PATH="$HOME/.nix-profile/bin:$PATH"' "$HOME/profile" || echo 'PATH="$HOME/.nix-profile/bin:$PATH"' >>$HOME/profile
+grep -qxF 'PATH="$HOME/.nix-profile/bin:$PATH"' "$HOME/.profile" || echo 'PATH="$HOME/.nix-profile/bin:$PATH"' >>$HOME/.profile
 
 # Ensure ~/.nix-profile/bin is in PATH for this script
 export PATH="$HOME/.nix-profile/bin:$PATH"
