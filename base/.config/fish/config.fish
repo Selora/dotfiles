@@ -29,6 +29,8 @@ fish_add_path ~/.local/bin
 #source ~/.config/fish/zoxide.fish
 zoxide init --cmd cd fish | source
 direnv hook fish | source
+direnv export fish | source
+
 starship init fish | source
 
 fzf_configure_bindings

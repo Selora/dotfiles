@@ -13,3 +13,21 @@
 --  },
 --  severity_sort = true,
 --})
+
+-- local is_desirable = function()
+--
+-- end
+--
+-- local inner = vim.diagnostic.handlers.virtual_text
+-- vim.diagnostic.handlers.virtual_text = {
+--   show = function(namespace, bufnr, diagnostics, opts)
+--     local diags_new = {}
+--     for _, diag in ipairs(diagnostics) do
+--       if is_desirable(diag) then
+--         table.insert(diags_new, diag)
+--       end
+--     end
+--     inner.show(namespace, bufnr, diags_new, opts)
+--   end,
+--   hide = inner.hide,
+-- }
