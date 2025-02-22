@@ -36,6 +36,7 @@
       "nil"
       "cargo"
       "tmux"
+      "just"
     ];
     unstablePackages = [
       "neovim"
