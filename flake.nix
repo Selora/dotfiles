@@ -27,7 +27,6 @@
       # ex: pyright needs node & npm...
       # Makes a good dependency mess, but it's contained to this nix-profiles
       "direnv"      # setup env vars upon entering a directory
-      "python3"
       "lua5_1"
       "luarocks-nix"
       "lazygit"
@@ -37,6 +36,8 @@
       "cargo"
       "tmux"
       "just"
+      "uv"
+      "python313"
     ];
     unstablePackages = [
       "neovim"
