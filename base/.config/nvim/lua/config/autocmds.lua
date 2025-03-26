@@ -17,12 +17,13 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 })
 
 -- Word motions work with underscore, when filetype is python
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "python",
-  callback = function()
-    vim.opt.iskeyword:append("-")
-  end,
-})
+-- NOTE:: Changing vim.opt is too messy
+-- vim.api.nvim_create_autocmd("FileType", {
+--   pattern = "python",
+--   callback = function()
+--     vim.opt.iskeyword:append("-")
+--   end,
+-- })
 
 -- Force refresh, using devpod ssh agent...
 -- local last_refresh = 0
