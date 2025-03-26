@@ -44,7 +44,8 @@ return {
         -- model = "o1-mini", -- your desired model (or use gpt-4o, etc.)
         timeout = 30000, -- timeout in milliseconds
         temperature = 0.2, -- adjust if needed
-        max_tokens = 8192,
+        -- max_tokens = 8192,
+        max_completion_tokens = 16384,
         -- reasoning_effort = "high", -- only supported for "o" models
         reasoning_effort = "medium", -- only supported for "o" models
       },
