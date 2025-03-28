@@ -27,12 +27,15 @@ grep -qxF "experimental-features = nix-command flakes" "$XDG_CONFIG_HOME/nix/nix
 # Ensure ~/.nix-profile/bin is in PATH for this script
 export PATH="$HOME/.nix-profile/bin:$PATH"
 
+export FLAKE_PATH="${DOTFILES_DIR}/base/nix"
+echo $FLAKE_PATH
+
 echo "**************************************"
-echo "* Installing Nix flake @$DOTFILES_DIR#packages.${ARCH}-${OS}"
+echo "* Installing Nix flake @$FLAKE_PATH#packages_main_host.${ARCH}-${OS}"
 # Using the arch-os target is a best-effort automation to build the same environment on different arch
-nix profile install $DOTFILES_DIR#packages.${ARCH}-${OS}
+nix profile install $FLAKE_PATH#packages.${ARCH}-${OS}
 # Update so it gets rid of version conflict and always install the latest
-nix profile upgrade ${ARCH}-${OS}
+nix profile upgrade --profile $FLAKE_PATH ${ARCH}-${OS}
 
 #nix build $DOTFILES_DIR
 
