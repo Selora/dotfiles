@@ -1,0 +1,21 @@
+[defaults]
+format = "{percent}\n#{time}\n"
+time_format = "%M:%S"
+
+[[sessions]]
+id = "work"
+name = "Work"
+duration = "5m"
+command = "notify-send 'Work Done!'"
+
+[[sessions]]
+id = "rest"
+name = "Rest"
+duration = "5m"
+command = "notify-send 'Rest Done!'"
+
+[[sessions]]
+id = "longrest"
+name = "Long Rest"
+duration = "15m"
+command = "notify-send 'Long Rest Done!'"

@@ -35,7 +35,7 @@ echo "* Installing Nix flake @$FLAKE_PATH#packages_main_host.${ARCH}-${OS}"
 # Using the arch-os target is a best-effort automation to build the same environment on different arch
 nix profile install $FLAKE_PATH#packages_main_host.${ARCH}-${OS}
 # Update so it gets rid of version conflict and always install the latest
-nix profile upgrade --profile $FLAKE_PATH ${ARCH}-${OS}
+nix profile upgrade main_host/nix
 
 echo "**************************************"
 echo "* Pushing main_host dotfiles         *"

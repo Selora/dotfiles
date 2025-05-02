@@ -1,26 +1,49 @@
 ## ~/.config/uair/uair.toml
+loop_on_end = true
+
 [defaults]
-format = "{time}\n"
-paused_state_text = "paused"
-resumed_state_text = "resumed"
+format = "{state} {time}\n"
+paused_state_text = ""
+resumed_state_text = ""
 
 [[sessions]]
-id = "quick"
-name = "Quick"
-duration = "15m"
+id = "pomodoro1"
+name = ""
+duration = "30m"
 time_format = "%M:%S"
-command = "notify-send 'Quick Done!'"
+command = "notify-send 'Pomodoro done!\n$(task +ACTIVE ids)'"
 
 [[sessions]]
-id = "work"
-name = "Work"
-duration = "52m"
-time_format = "%M:%S"
-command = "notify-send 'Work Done!'"
-
-[[sessions]]
-id = "rest"
-name = "Rest"
-duration = "17m"
+id = "rest1"
+name = ""
+duration = "5m"
 time_format = "%M:%S"
 command = "notify-send 'Rest Done!'"
+
+[[sessions]]
+id = "pomodoro2"
+name = ""
+duration = "30m"
+time_format = "%M:%S"
+command = "notify-send 'Pomodoro done!'"
+
+[[sessions]]
+id = "rest2"
+name = ""
+duration = "5m"
+time_format = "%M:%S"
+command = "notify-send 'Rest Done!'"
+
+[[sessions]]
+id = "pomodoro3"
+name = ""
+duration = "30m"
+time_format = "%M:%S"
+command = "notify-send 'Pomodoro done!'"
+
+[[sessions]]
+id = "long1"
+name = ""
+duration = "25m"
+time_format = "%M:%S"
+command = "notify-send 'Long rest Done!'"

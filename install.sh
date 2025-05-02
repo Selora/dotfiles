@@ -31,11 +31,11 @@ export FLAKE_PATH="${DOTFILES_DIR}/base/nix"
 echo $FLAKE_PATH
 
 echo "**************************************"
-echo "* Installing Nix flake @$FLAKE_PATH#packages_main_host.${ARCH}-${OS}"
+echo "* Installing Nix flake @$FLAKE_PATH#packages.${ARCH}-${OS}"
 # Using the arch-os target is a best-effort automation to build the same environment on different arch
 nix profile install $FLAKE_PATH#packages.${ARCH}-${OS}
 # Update so it gets rid of version conflict and always install the latest
-nix profile upgrade --profile $FLAKE_PATH ${ARCH}-${OS}
+nix profile upgrade base/nix
 
 #nix build $DOTFILES_DIR
 

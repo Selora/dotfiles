@@ -6,6 +6,12 @@ return {
     lazy = true,
     version = false, -- set this if you want to always pull the latest change
     opts = {
+      file_selector = {
+        --- @alias FileSelectorProvider "native" | "fzf" | "mini.pick" | "snacks" | "telescope" | string | fun(params: avante.file_selector.IParams|nil): nil
+        provider = "fzf",
+        -- Options override for custom providers
+        provider_opts = {},
+      },
       -- add any opts here
       mappings = {
         ask = prefix .. "<CR>",
@@ -40,7 +46,7 @@ return {
       openai = {
         endpoint = "https://api.openai.com/v1",
         -- model = "gpt-4o-mini",
-        model = "o3-mini", -- your desired model (or use gpt-4o, etc.)
+        -- model = "o3-mini", -- your desired model (or use gpt-4o, etc.)
         -- model = "o1-mini", -- your desired model (or use gpt-4o, etc.)
         timeout = 30000, -- timeout in milliseconds
         temperature = 0.2, -- adjust if needed
