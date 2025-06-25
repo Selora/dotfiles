@@ -21,6 +21,7 @@ touch ~/.alias.fish # If it doesn't exists
 
 set -gx LANG "en_US.utf-8"
 set -gx EDITOR nvim
+set -gx MANPAGER 'nvim +Man!'
 
 fish_add_path ~/.local/bin
 
