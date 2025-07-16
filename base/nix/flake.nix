@@ -2,7 +2,7 @@
   description = "Install basic sla-shell environement";
 
   inputs = {
-    nixpkgs-stable.url = "github:nixos/nixpkgs?ref=release-24.11";
+    nixpkgs-stable.url = "github:nixos/nixpkgs?ref=release-25.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs?ref=nixos-unstable";
   };
 
