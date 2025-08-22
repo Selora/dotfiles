@@ -2,7 +2,7 @@ local prefix = "<Leader>a"
 return {
   {
     "yetone/avante.nvim",
-    enabled = false,
+    enabled = true,
     event = "VeryLazy",
     lazy = true,
     version = false, -- set this if you want to always pull the latest change
@@ -43,18 +43,36 @@ return {
       --   temperature = 0,
       --   max_tokens = 8192,
       -- },
-      provider = "openai",
-      openai = {
-        endpoint = "https://api.openai.com/v1",
-        -- model = "gpt-4o-mini",
-        -- model = "o3-mini", -- your desired model (or use gpt-4o, etc.)
-        -- model = "o1-mini", -- your desired model (or use gpt-4o, etc.)
-        timeout = 30000, -- timeout in milliseconds
-        temperature = 0.2, -- adjust if needed
-        -- max_tokens = 8192,
-        max_completion_tokens = 16384,
-        -- reasoning_effort = "high", -- only supported for "o" models
-        reasoning_effort = "medium", -- only supported for "o" models
+      provider = "gemini",
+      providers = {
+        openai = {
+          endpoint = "https://api.openai.com/v1",
+          model = "gpt-5-mini",
+          -- model = "gpt-4o-mini",
+          -- model = "o3-mini", -- your desired model (or use gpt-4o, etc.)
+          -- model = "o1-mini", -- your desired model (or use gpt-4o, etc.)
+          timeout = 30000, -- timeout in milliseconds
+          extra_request_body = {
+            temperature = 1, -- adjust if needed
+            -- max_completion_tokens = 16384,
+            max_completion_tokens = 40000,
+            reasoning_effort = "medium", -- only supported for "o" models
+          },
+          -- max_tokens = 8192,
+          -- reasoning_effort = "high", -- only supported for "o" models
+        },
+        gemini = {
+          endpoint = "https://generativelanguage.googleapis.com/v1beta/models",
+          model = "gemini-2.5-pro",
+          timeout = 30000, -- Timeout in milliseconds
+          context_window = 1048576,
+          use_ReAct_prompt = true,
+          extra_request_body = {
+            generationConfig = {
+              temperature = 0.75,
+            },
+          },
+        },
       },
     },
     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
