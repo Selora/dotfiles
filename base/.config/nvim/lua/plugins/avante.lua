@@ -7,6 +7,7 @@ return {
     lazy = true,
     version = false, -- set this if you want to always pull the latest change
     opts = {
+      instructions_file = "avante.md",
       file_selector = {
         --- @alias FileSelectorProvider "native" | "fzf" | "mini.pick" | "snacks" | "telescope" | string | fun(params: avante.file_selector.IParams|nil): nil
         provider = "fzf",
@@ -63,7 +64,8 @@ return {
         },
         gemini = {
           endpoint = "https://generativelanguage.googleapis.com/v1beta/models",
-          model = "gemini-2.5-pro",
+          -- model = "gemini-2.5-pro",
+          model = "gemini-2.5-flash",
           timeout = 30000, -- Timeout in milliseconds
           context_window = 1048576,
           use_ReAct_prompt = true,
@@ -80,9 +82,17 @@ return {
     build = vim.fn.has("win32") == 1 and "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false"
       or "make",
     dependencies = {
-      -- "stevearc/dressing.nvim",
       "nvim-lua/plenary.nvim",
       "MunifTanjim/nui.nvim",
+      --- The below dependencies are optional,
+      "echasnovski/mini.pick", -- for file_selector provider mini.pick
+      "nvim-telescope/telescope.nvim", -- for file_selector provider telescope
+      "hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
+      "ibhagwan/fzf-lua", -- for file_selector provider fzf
+      "stevearc/dressing.nvim", -- for input provider dressing
+      "folke/snacks.nvim", -- for input provider snacks
+      "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
+      "zbirenbaum/copilot.lua", -- for providers='copilot'
       {
         -- support for image pasting
         "HakonHarnes/img-clip.nvim",
@@ -103,14 +113,10 @@ return {
       {
         -- Make sure to set this up properly if you have lazy=true
         "MeanderingProgrammer/render-markdown.nvim",
-        dependencies = {
-          -- make sure rendering happens even without opening a markdown file first
-          "yetone/avante.nvim",
+        opts = {
+          file_types = { "markdown", "Avante" },
         },
-        opts = function(_, opts)
-          opts.file_types = opts.file_types or { "markdown", "norg", "rmd", "org" }
-          vim.list_extend(opts.file_types, { "Avante" })
-        end,
+        ft = { "markdown", "Avante" },
       },
     },
   },
