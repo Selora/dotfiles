@@ -48,9 +48,9 @@ fish -c "fisher install PatrickF1/fzf.fish"
 BLOCK='
 # AUTO_FISH
 # Start Fish only for interactive sessions
-PATH=$HOME/.nix-profile/bin:$PATH
+FISH_PATH=$HOME/.nix-profile/bin
 if [[ $- == *i* ]] && [ -x "$(command -v fish)" ]; then
-  exec fish
+  exec $FISH_PATH/fish
 else
   echo "⚠️ Fish shell not found, falling back to default shell."
 fi
