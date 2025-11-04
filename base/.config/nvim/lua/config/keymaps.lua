@@ -46,4 +46,50 @@ vim.keymap.set("n", "<leader>df", toggle_float_dapui_panel, { desc = "Toggle flo
 -- Terminal mode
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", {desc = "Terminal: Quit input mode"} )
 
+-- Toggle auto-reload with <leader>uR (off by default)
+-- Toggle auto-reload with <leader>uR (off by default)
+local enabled = false
+local group = nil
+local key = "<leader>uR"
+local icon_on, icon_off = "", ""  -- Nerd Font toggle icons
+
+local function update_desc()
+  -- Refresh mapping description so which-key shows correct icon
+  vim.keymap.set("n", key, toggle, {
+    desc = string.format("%s Auto-reload", enabled and icon_on or icon_off),
+    silent = true,
+  })
+end
+
+function _G.toggle()
+  enabled = not enabled
+  if enabled then
+    vim.o.autoread = true
+    vim.o.confirm = true
+    group = vim.api.nvim_create_augroup("UserAutoReload", { clear = true })
+    vim.api.nvim_create_autocmd(
+      { "FocusGained", "BufEnter", "CursorHold", "CursorHoldI" },
+      { group = group, command = "silent! checktime" }
+    )
+    vim.api.nvim_create_autocmd("FileChangedShellPost", {
+      group = group,
+      callback = function()
+        vim.notify("File changed on disk → reloaded", vim.log.levels.INFO)
+      end,
+    })
+    vim.notify("Auto-reload enabled", vim.log.levels.INFO)
+  else
+    vim.o.autoread = false
+    if group then
+      pcall(vim.api.nvim_del_augroup_by_id, group)
+      group = nil
+    end
+    vim.notify("Auto-reload disabled", vim.log.levels.INFO)
+  end
+  update_desc()
+end
+
+-- initial keymap (off by default)
+update_desc()
+
 -- stylua: ignore end
