@@ -16,6 +16,15 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   end,
 })
 
+-- Enable Tree-sitter on FileType
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "*",
+  callback = function(args)
+    -- args.buf is the buffer number
+    pcall(vim.treesitter.start, args.buf)
+  end,
+})
+
 -- Word motions work with underscore, when filetype is python
 -- NOTE:: Changing vim.opt is too messy
 -- vim.api.nvim_create_autocmd("FileType", {

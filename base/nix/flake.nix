@@ -31,6 +31,7 @@
         "lua5_1"
         "lazygit"
         "tree-sitter"
+        "tree-sitter-cli"
 
         "cargo"
         "nodejs"
