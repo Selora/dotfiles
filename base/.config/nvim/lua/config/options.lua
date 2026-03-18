@@ -19,8 +19,11 @@ vim.o.scrolloff = 6
 
 -- Temporary fix for https://github.com/wez/wezterm/issues/4607
 -- Arch still tracks the 20240203 release
-vim.o.termsync = false
-vim.o.lazyredraw = false
-vim.o.termguicolors = true
-vim.o.redrawtime = 10000
-vim.o.ttyfast = true
+-- vim.o.termsync = false
+-- vim.o.lazyredraw = false
+-- vim.o.termguicolors = true
+-- vim.o.redrawtime = 10000
+-- vim.o.ttyfast = true
+
+-- Dangerous
+vim.opt.exrc = false
