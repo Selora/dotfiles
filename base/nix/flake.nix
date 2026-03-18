@@ -31,6 +31,7 @@
         "lua5_1"
         "lazygit"
         "tree-sitter"
+        "age"
 
         "cargo"
         "nodejs"
